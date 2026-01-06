@@ -1,0 +1,676 @@
+THE TESTS INCLUDED ARE THE FOLLOWING:
+-GENERATE RANDOM PUZZLE EXAMPLE (1)
+-USE EXISTING MANUAL PUZZLE (3)
+-INVALID PUZZLES (7)
+-TRIVIAL SATISFIABLE PUZZLES (2)
+-NON-TRIVIAL SAT PUZZLES (1)
+-SMT2 (1)
+
+
+********** GENERATE RANDOM PUZZLE EXAMPLE: **********
+
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py
+Choose puzzle source:
+  1) Generate random puzzle
+  2) Use existing manual puzzle (.txt in this directory)
+Enter 1 or 2: 1
+
+Random puzzle generation parameters (press Enter for defaults):
+Board size N [5]: 6
+Number of obstacle cars [4]: 
+Main car orientation (H or V) [H]: V
+Max obstacle car length [3]: 
+Random seed (blank for None): 
+Generated puzzle:
+ X  X  X  X  p  X 
+ X  X  X  X  X  X 
+ X  C  X  D  D  X 
+ X  A  A  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X [B] X 
+
+Puzzle, first move (B moves right one cell):
+ X  X  X  X  p  X 
+ X  X  X  X  X  X 
+ X  C  X  D  D  X 
+ X  A  A  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X [X] B 
+
+Puzzle, second move (D moves left one cell):
+ X  X  X  X  p  X 
+ X  X  X  X  X  X 
+ X  C  D  D  X  X 
+ X  A  A  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X [X] B 
+
+Puzzle, third move (p moves down one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  p  X 
+ X  C  D  D  X  X 
+ X  A  A  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X [X] B 
+
+Puzzle, fourth move (p moves down one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  C  D  D  p  X 
+ X  A  A  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X [X] B 
+
+Puzzle, fifth move (p moves down one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  C  D  D  X  X 
+ X  A  A  X  p  X 
+ X  X  X  X  X  X 
+ X  X  X  X [X] B 
+
+Puzzle, sixth move (p moves down one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  C  D  D  X  X 
+ X  A  A  X  X  X 
+ X  X  X  X  p  X 
+ X  X  X  X [X] B 
+
+Puzzle, seventh move (p moves down one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  C  D  D  X  X 
+ X  A  A  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X [p] B 
+
+Puzzle resolved in 7 moves.
+Solution: B right one cell, D left one cell, p down one cell, p down one cell, p down one cell, p down one cell, p down one cell
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$
+
+-----------------------------------------------------------------------------------------------------------
+
+********** USE EXISTING MANUAL PUZZLE: **********
+
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ ls
+car_puzzle.py       puzzle_invalid_P_not_col0_5x5.txt           puzzle_invalid_two_goals_5x5.txt           puzzle_solved_5x5.txt
+manual_puzzle0.txt  puzzle_invalid_goal_not_lastcol_5x5.txt     puzzle_invalid_uppercase_vertical_5x5.txt  results.txt
+manual_puzzle1.txt  puzzle_invalid_no_goal_5x5.txt              puzzle_sat_1move_2x2.txt
+manual_puzzle2.txt  puzzle_invalid_noncontiguous_5x5.txt        puzzle_sat_1move_5x5.txt
+outputs             puzzle_invalid_same_row_horizontal_5x5.txt  puzzle_sat_obstacle_6x6.txt
+
+********** PUZZLE 0: **********
+
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ cat manual_puzzle0.txt
+X B B B X
+X X b X X
+P X b X Z
+X X X X X
+A A A X X
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py
+Choose puzzle source:
+  1) Generate random puzzle
+  2) Use existing manual puzzle (.txt in this directory)
+Enter 1 or 2: 2
+
+Available puzzle files:
+  1) manual_puzzle0.txt
+  2) manual_puzzle1.txt
+  3) manual_puzzle2.txt
+  4) puzzle_invalid_P_not_col0_5x5.txt
+  5) puzzle_invalid_goal_not_lastcol_5x5.txt
+  6) puzzle_invalid_no_goal_5x5.txt
+  7) puzzle_invalid_noncontiguous_5x5.txt
+  8) puzzle_invalid_same_row_horizontal_5x5.txt
+  9) puzzle_invalid_two_goals_5x5.txt
+  10) puzzle_invalid_uppercase_vertical_5x5.txt
+  11) puzzle_sat_1move_2x2.txt
+  12) puzzle_sat_1move_5x5.txt
+  13) puzzle_sat_obstacle_6x6.txt
+  14) puzzle_solved_5x5.txt
+  15) results.txt
+Pick a file by number (or type a filename): 1
+Puzzle is valid, but no solution found within the given move limit.
+
+********** PUZZLE 1 **********
+
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ cat manual_puzzle1.txt
+X B B X X
+X X b X X
+P X b X Z
+X X X X X
+A A A X X
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py
+Choose puzzle source:
+  1) Generate random puzzle
+  2) Use existing manual puzzle (.txt in this directory)
+Enter 1 or 2: 2
+
+Available puzzle files:
+  1) manual_puzzle0.txt
+  2) manual_puzzle1.txt
+  3) manual_puzzle2.txt
+  4) puzzle_invalid_P_not_col0_5x5.txt
+  5) puzzle_invalid_goal_not_lastcol_5x5.txt
+  6) puzzle_invalid_no_goal_5x5.txt
+  7) puzzle_invalid_noncontiguous_5x5.txt
+  8) puzzle_invalid_same_row_horizontal_5x5.txt
+  9) puzzle_invalid_two_goals_5x5.txt
+  10) puzzle_invalid_uppercase_vertical_5x5.txt
+  11) puzzle_sat_1move_2x2.txt
+  12) puzzle_sat_1move_5x5.txt
+  13) puzzle_sat_obstacle_6x6.txt
+  14) puzzle_solved_5x5.txt
+  15) results.txt
+Pick a file by number (or type a filename): 2
+Puzzle is valid.
+
+Puzzle:
+ X  B  B  X  X 
+ X  X  b  X  X 
+ P  X  b  X [X]
+ X  X  X  X  X 
+ A  A  A  X  X 
+
+Puzzle, first move (B moves left one cell):
+ B  B  X  X  X 
+ X  X  b  X  X 
+ P  X  b  X [X]
+ X  X  X  X  X 
+ A  A  A  X  X 
+
+Puzzle, second move (P moves right one cell):
+ B  B  X  X  X 
+ X  X  b  X  X 
+ X  P  b  X [X]
+ X  X  X  X  X 
+ A  A  A  X  X 
+
+Puzzle, third move (b moves up one cell):
+ B  B  b  X  X 
+ X  X  b  X  X 
+ X  P  X  X [X]
+ X  X  X  X  X 
+ A  A  A  X  X 
+
+Puzzle, fourth move (P moves right one cell):
+ B  B  b  X  X 
+ X  X  b  X  X 
+ X  X  P  X [X]
+ X  X  X  X  X 
+ A  A  A  X  X 
+
+Puzzle, fifth move (P moves right one cell):
+ B  B  b  X  X 
+ X  X  b  X  X 
+ X  X  X  P [X]
+ X  X  X  X  X 
+ A  A  A  X  X 
+
+Puzzle, sixth move (P moves right one cell):
+ B  B  b  X  X 
+ X  X  b  X  X 
+ X  X  X  X [P]
+ X  X  X  X  X 
+ A  A  A  X  X 
+
+Puzzle resolved in 6 moves.
+Solution: B left one cell, P right one cell, b up one cell, P right one cell, P right one cell, P right one cell
+
+********** PUZZLE 2 **********
+
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ cat manual_puzzle2.txt
+X B B B X X
+X X X X X X
+P X b X X Z
+X X b X X X
+X X A A X X
+X X X X X X(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py
+Choose puzzle source:
+  1) Generate random puzzle
+  2) Use existing manual puzzle (.txt in this directory)
+Enter 1 or 2: 2
+
+Available puzzle files:
+  1) manual_puzzle0.txt
+  2) manual_puzzle1.txt
+  3) manual_puzzle2.txt
+  4) puzzle_invalid_P_not_col0_5x5.txt
+  5) puzzle_invalid_goal_not_lastcol_5x5.txt
+  6) puzzle_invalid_no_goal_5x5.txt
+  7) puzzle_invalid_noncontiguous_5x5.txt
+  8) puzzle_invalid_same_row_horizontal_5x5.txt
+  9) puzzle_invalid_two_goals_5x5.txt
+  10) puzzle_invalid_uppercase_vertical_5x5.txt
+  11) puzzle_sat_1move_2x2.txt
+  12) puzzle_sat_1move_5x5.txt
+  13) puzzle_sat_obstacle_6x6.txt
+  14) puzzle_solved_5x5.txt
+  15) results.txt
+Pick a file by number (or type a filename): 3
+Puzzle is valid.
+
+Puzzle:
+ X  B  B  B  X  X 
+ X  X  X  X  X  X 
+ P  X  b  X  X [X]
+ X  X  b  X  X  X 
+ X  X  A  A  X  X 
+ X  X  X  X  X  X 
+
+Puzzle, first move (A moves right one cell):
+ X  B  B  B  X  X 
+ X  X  X  X  X  X 
+ P  X  b  X  X [X]
+ X  X  b  X  X  X 
+ X  X  X  A  A  X 
+ X  X  X  X  X  X 
+
+Puzzle, second move (P moves right one cell):
+ X  B  B  B  X  X 
+ X  X  X  X  X  X 
+ X  P  b  X  X [X]
+ X  X  b  X  X  X 
+ X  X  X  A  A  X 
+ X  X  X  X  X  X 
+
+Puzzle, third move (b moves down one cell):
+ X  B  B  B  X  X 
+ X  X  X  X  X  X 
+ X  P  X  X  X [X]
+ X  X  b  X  X  X 
+ X  X  b  A  A  X 
+ X  X  X  X  X  X 
+
+Puzzle, fourth move (P moves right one cell):
+ X  B  B  B  X  X 
+ X  X  X  X  X  X 
+ X  X  P  X  X [X]
+ X  X  b  X  X  X 
+ X  X  b  A  A  X 
+ X  X  X  X  X  X 
+
+Puzzle, fifth move (P moves right one cell):
+ X  B  B  B  X  X 
+ X  X  X  X  X  X 
+ X  X  X  P  X [X]
+ X  X  b  X  X  X 
+ X  X  b  A  A  X 
+ X  X  X  X  X  X 
+
+Puzzle, sixth move (P moves right one cell):
+ X  B  B  B  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X  P [X]
+ X  X  b  X  X  X 
+ X  X  b  A  A  X 
+ X  X  X  X  X  X 
+
+Puzzle, seventh move (P moves right one cell):
+ X  B  B  B  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X  X [P]
+ X  X  b  X  X  X 
+ X  X  b  A  A  X 
+ X  X  X  X  X  X 
+
+Puzzle resolved in 7 moves.
+Solution: A right one cell, P right one cell, b down one cell, P right one cell, P right one cell, P right one cell, P right one cell
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ 
+
+-----------------------------------------------------------------------------------------------------------
+
+********** INVALID PUZZLES: **********
+
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ cat puzzle_invalid_goal_not_lastcol_5x5.txt
+ X  X  X  X  X
+ X  X  X  X  X
+ P  X  Z  X  X
+ X  X  X  X  X
+ X  X  X  X  X
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py --file puzzle_invalid_goal_not_lastcol_5x5.txt
+Puzzle is NOT valid: Goal 'Z' must be on last column (col 4) for horizontal main car, got col 2
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ cat puzzle_invalid_no_goal_5x5.txt
+ X  X  X  X  X
+ X  X  X  X  X
+ P  X  X  X  X
+ X  X  X  X  X
+ X  X  X  X  X
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py --file puzzle_invalid_no_goal_5x5.txt
+Puzzle is NOT valid: No goal cell 'Z' found
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ cat puzzle_invalid_noncontiguous_5x5.txt
+ X  B  X  B  X
+ X  X  X  X  X
+ P  X  X  X  Z
+ X  X  X  X  X
+ X  X  X  X  X
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py --file puzzle_invalid_noncontiguous_5x5.txt
+Puzzle is NOT valid: Car 'B' is not contiguous horizontally
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ cat puzzle_invalid_P_not_col0_5x5.txt
+ X  X  X  X  X
+ X  X  X  X  X
+ X  P  X  X  Z
+ X  X  X  X  X
+ X  X  X  X  X
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py --file puzzle_invalid_P_not_col0_5x5.txt
+Puzzle is NOT valid: Main car 'P' must start on first column (col 0), got col 1
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ cat puzzle_invalid_same_row_horizontal_5x5.txt
+ X  X  X  X  X
+ X  X  X  X  X
+ P  A  A  X  Z
+ X  X  X  X  X
+ X  X  X  X  X
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py --file puzzle_invalid_same_row_horizontal_5x5.txt
+Puzzle is NOT valid: Another horizontal car shares the main car's row (forbidden)
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ cat puzzle_invalid_two_goals_5x5.txt
+ X  X  X  X  Z
+ X  X  X  X  X
+ P  X  X  X  Z
+ X  X  X  X  X
+ X  X  X  X  X
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py --file puzzle_invalid_two_goals_5x5.txt
+Puzzle is NOT valid: Multiple goal cells 'Z' found at [(0, 4), (2, 4)]
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ cat puzzle_invalid_uppercase_vertical_5x5.txt
+ X  A  X  X  X
+ X  A  X  X  X
+ P  X  X  X  Z
+ X  X  X  X  X
+ X  X  X  X  X
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py --file puzzle_invalid_uppercase_vertical_5x5.txt
+Puzzle is NOT valid: Car 'A' is uppercase but vertical (expected horizontal)
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$
+
+
+********** TRIVIAL SATISFIABLE PUZZLES: **********
+
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ cat puzzle_sat_1move_2x2.txt
+ P  Z
+ X  X
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py --file puzzle_sat_1move_2x2.txt --maxT 2
+Puzzle is valid.
+
+Puzzle:
+ P [X]
+ X  X 
+
+Puzzle, first move (P moves right one cell):
+ X [P]
+ X  X 
+
+Puzzle resolved in 1 moves.
+Solution: P right one cell
+
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ cat puzzle_sat_1move_5x5.txt
+ X  X  X  X  X
+ X  X  X  X  X
+ P  X  X  X  Z
+ X  X  X  X  X
+ X  X  X  X  X
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py --file puzzle_sat_1move_5x5.txt --maxT 5
+Puzzle is valid.
+
+Puzzle:
+ X  X  X  X  X 
+ X  X  X  X  X 
+ P  X  X  X [X]
+ X  X  X  X  X 
+ X  X  X  X  X 
+
+Puzzle, first move (P moves right one cell):
+ X  X  X  X  X 
+ X  X  X  X  X 
+ X  P  X  X [X]
+ X  X  X  X  X 
+ X  X  X  X  X 
+
+Puzzle, second move (P moves right one cell):
+ X  X  X  X  X 
+ X  X  X  X  X 
+ X  X  P  X [X]
+ X  X  X  X  X 
+ X  X  X  X  X 
+
+Puzzle, third move (P moves right one cell):
+ X  X  X  X  X 
+ X  X  X  X  X 
+ X  X  X  P [X]
+ X  X  X  X  X 
+ X  X  X  X  X 
+
+Puzzle, fourth move (P moves right one cell):
+ X  X  X  X  X 
+ X  X  X  X  X 
+ X  X  X  X [P]
+ X  X  X  X  X 
+ X  X  X  X  X 
+
+Puzzle resolved in 4 moves.
+Solution: P right one cell, P right one cell, P right one cell, P right one cell
+
+
+********** NON-TRIVIAL SAT PUZZLES: **********
+
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ cat ./puzzle_sat_obstacle_6x6.txt
+ X  X  b  X  X  X
+ X  X  b  X  X  X
+ P  X  b  X  X  Z
+ X  X  X  X  X  X
+ X  X  X  X  X  X
+ X  X  X  X  X  X
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py --file puzzle_sat_obstacle_6x6.txt --maxT 10 --dump-smt2
+Puzzle is valid.
+
+Puzzle:
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+ P  X  b  X  X [X]
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+
+Puzzle, first move (b moves down one cell):
+ X  X  X  X  X  X 
+ X  X  b  X  X  X 
+ P  X  b  X  X [X]
+ X  X  b  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+
+Puzzle, second move (P moves right one cell):
+ X  X  X  X  X  X 
+ X  X  b  X  X  X 
+ X  P  b  X  X [X]
+ X  X  b  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+
+Puzzle, third move (b moves down one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  P  b  X  X [X]
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+ X  X  X  X  X  X 
+
+Puzzle, fourth move (b moves down one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  P  X  X  X [X]
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+
+Puzzle, fifth move (P moves right one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  X  P  X  X [X]
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+
+Puzzle, sixth move (P moves right one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  P  X [X]
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+
+Puzzle, seventh move (P moves right one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X  P [X]
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+
+Puzzle, eighth move (P moves right one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X  X [P]
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+
+Puzzle resolved in 8 moves.
+Solution: b down one cell, P right one cell, b down one cell, b down one cell, P right one cell, P right one cell, P right one cell, P right one cell
+
+-----------------------------------------------------------------------------------------------------------
+
+********** SMT2: **********
+
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ ls -l
+total 92
+-rw-r--r-- 1 eagle eagle 44524 Jan  6 15:49 car_puzzle.py
+drwxr-xr-x 2 eagle eagle  4096 Jan  6 16:03 outputs
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ rm -rf outputs
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ mkdir outputs
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ python3 car_puzzle.py --file puzzle_sat_obstacle_6x6.txt --maxT 8 --dump-smt2
+Puzzle is valid.
+
+Puzzle:
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+ P  X  b  X  X [X]
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+
+Puzzle, first move (b moves down one cell):
+ X  X  X  X  X  X 
+ X  X  b  X  X  X 
+ P  X  b  X  X [X]
+ X  X  b  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+
+Puzzle, second move (P moves right one cell):
+ X  X  X  X  X  X 
+ X  X  b  X  X  X 
+ X  P  b  X  X [X]
+ X  X  b  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+
+Puzzle, third move (b moves down one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  P  b  X  X [X]
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+ X  X  X  X  X  X 
+
+Puzzle, fourth move (b moves down one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  P  X  X  X [X]
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+
+Puzzle, fifth move (P moves right one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  X  P  X  X [X]
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+
+Puzzle, sixth move (P moves right one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  P  X [X]
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+
+Puzzle, seventh move (P moves right one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X  P [X]
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+
+Puzzle, eighth move (P moves right one cell):
+ X  X  X  X  X  X 
+ X  X  X  X  X  X 
+ X  X  X  X  X [P]
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+ X  X  b  X  X  X 
+
+Puzzle resolved in 8 moves.
+Solution: b down one cell, P right one cell, b down one cell, b down one cell, P right one cell, P right one cell, P right one cell, P right one cell
+
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ ls outputs
+model_dump_T0.smt2  model_dump_T2.smt2  model_dump_T4.smt2  model_dump_T6.smt2  model_dump_T8.smt2
+model_dump_T1.smt2  model_dump_T3.smt2  model_dump_T5.smt2  model_dump_T7.smt2
+
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ head -n 20 outputs/model_dump_T8.smt2
+; benchmark generated from python API
+(set-info :status unknown)
+(declare-fun r_0_0 () Int)
+(declare-fun c_0_0 () Int)
+(declare-fun r_1_0 () Int)
+(declare-fun c_1_0 () Int)
+(declare-fun r_0_1 () Int)
+(declare-fun c_0_1 () Int)
+(declare-fun r_0_2 () Int)
+(declare-fun c_0_2 () Int)
+(declare-fun r_0_3 () Int)
+(declare-fun c_0_3 () Int)
+(declare-fun r_0_4 () Int)
+(declare-fun c_0_4 () Int)
+(declare-fun r_0_5 () Int)
+(declare-fun c_0_5 () Int)
+(declare-fun r_0_6 () Int)
+(declare-fun c_0_6 () Int)
+(declare-fun r_0_7 () Int)
+(declare-fun c_0_7 () Int)
+
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ tail -n 20 outputs/model_dump_T8.smt2
+ (let ((?x1077 (+ c_1_7 0)))
+ (let (($x1112 (and (distinct c_0_7 ?x1077) true)))
+ (or (and (distinct (+ r_0_7 2) r_1_7) true) $x1112))))
+(assert
+ (let ((?x1014 (+ c_1_8 0)))
+ (let (($x1192 (and (distinct c_0_8 ?x1014) true)))
+ (or (and (distinct (+ r_0_8 0) r_1_8) true) $x1192))))
+(assert
+ (let ((?x1014 (+ c_1_8 0)))
+ (let (($x1192 (and (distinct c_0_8 ?x1014) true)))
+ (or (and (distinct (+ r_0_8 1) r_1_8) true) $x1192))))
+(assert
+ (let ((?x1014 (+ c_1_8 0)))
+ (let (($x1192 (and (distinct c_0_8 ?x1014) true)))
+ (or (and (distinct (+ r_0_8 2) r_1_8) true) $x1192))))
+(assert
+ (= r_1_8 2))
+(assert
+ (= c_1_8 5))
+(check-sat)
+
+(.venv) eagle@Lenovo:~/Documents/SFS/Project/z3_cars/tests/version2$ z3 outputs/model_dump_T8.smt2
+sat
